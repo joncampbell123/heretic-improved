@@ -25,6 +25,9 @@ CDEFS.udp = -DUNIX -DHAVE_USLEEP -DHAVE_MATH_H -DHAVE_VALUES_H -DLINUX_MOUSE \
 COPT.x86 = -march=pentium -O2 -falign-jumps=2 -falign-functions=2 -D__32BIT__ \
 		-DHAVE_ALLOCA_H
 
+COPT.x86_64 = -march=athlon64 -O2 -falign-jumps=4 -falign-functions=4 -D__64BIT__ \
+		-DHAVE_ALLOCA_H
+
 COPT.m68k = -m68020-60 -O2 -fomit-frame-pointer -D__BIG_ENDIAN__ -D__32BIT__ \
 		-DHAVE_ALLOCA_H
 
@@ -36,8 +39,14 @@ COPT.arm = -O2 -D__32BIT__ -fsigned-char -fomit-frame-pointer \
            -DHAVE_ALLOCA_H -D__PACKED__=__attribute__\ \(\(packed\)\)
 # _end_
 
+plat=$(shell uname -m)
+
 # Change this to change the platform
+ifeq ($(plat),x86_64)
+COPT.arch = $(COPT.x86_64)
+else
 COPT.arch = $(COPT.x86)
+endif
 
 # If you want IPX-netcode compiled, replace $(CDEFS.udp) with $(CDEFS.ipx)
 

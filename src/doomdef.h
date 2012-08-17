@@ -446,8 +446,13 @@ typedef struct mobj_s
   int			damage  __PACKED__ ;		  /* For missiles */
   int			flags  __PACKED__ ;
   int			flags2  __PACKED__ ;		  /* Heretic flags */
+#ifdef __64BIT__
+  long			special1  __PACKED__ ;	  /* Special info */
+  long			special2  __PACKED__ ;	  /* Special info */
+#else
   int			special1  __PACKED__ ;	  /* Special info */
   int			special2  __PACKED__ ;	  /* Special info */
+#endif
   int		        health  __PACKED__ ;
   int			movedir  __PACKED__ ;	  /* 0-7 */
   int		        movecount  __PACKED__ ;	  /* when 0, select a new dir */
