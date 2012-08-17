@@ -678,7 +678,7 @@ static void DrawSaveMenu(void)
 void MN_LoadSlotText(void)
 {
   FILE    *fp;
-  int     count;
+/*  int     count;*/
   int     i;
   char    name[256];
   
@@ -699,7 +699,7 @@ void MN_LoadSlotText(void)
 	  SlotStatus[i] = 0;
 	  continue;
 	}
-      count = fread(&SlotText[i], SLOTTEXTLEN, 1, fp);
+      /*count = */fread(&SlotText[i], SLOTTEXTLEN, 1, fp);
       fclose(fp);
       SlotStatus[i] = 1;
     }
@@ -838,7 +838,7 @@ static boolean SCNetCheck(int option)
   //
   //---------------------------------------------------------------------------
 */
-static boolean SCQuitGame(int option)
+static boolean SCQuitGame(int __attribute__((unused)) option)
 {
   MenuActive = false;
   askforquit = true;
@@ -858,7 +858,7 @@ static boolean SCQuitGame(int option)
   //
   //---------------------------------------------------------------------------
 */
-static boolean SCEndGame(int option)
+static boolean SCEndGame(int __attribute__((unused)) option)
 {
   if(demoplayback || netgame)
     {
@@ -882,7 +882,7 @@ static boolean SCEndGame(int option)
   //
   //---------------------------------------------------------------------------
 */
-static boolean SCMessages(int option)
+static boolean SCMessages(int __attribute__((unused)) option)
 {
   messageson ^= 1;
   if(messageson)
@@ -905,7 +905,7 @@ static boolean SCMessages(int option)
   //
   //---------------------------------------------------------------------------
 */
-static boolean SCMouseLook(int option)
+static boolean SCMouseLook(int __attribute__((unused)) option)
 {
   mouseLook ^= 1;
   if(mouseLook)
@@ -928,7 +928,7 @@ static boolean SCMouseLook(int option)
   //
   //---------------------------------------------------------------------------
 */
-static boolean SCMouseInvert(int option)
+static boolean SCMouseInvert(int __attribute__((unused)) option)
 {
   mouseInvert ^= 1;
   if(mouseInvert)
@@ -1193,7 +1193,7 @@ static boolean SCScreenSize(int option)
   //
   //---------------------------------------------------------------------------
 */
-static boolean SCInfo(int option)
+static boolean SCInfo(int __attribute__((unused)) option)
 {
   InfoType = 1;
   S_StartSound(NULL, sfx_dorcls);

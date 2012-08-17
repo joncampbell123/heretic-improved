@@ -897,7 +897,7 @@ void P_PlayerUseArtifact(player_t *player, artitype_t arti)
   
   for(i = 0; i < player->inventorySlotNum; i++)
     {
-      if(player->inventory[i].type == arti)
+      if((unsigned)player->inventory[i].type == (unsigned)arti)
 	{ /* Found match - try to use */
 	  if(P_UseArtifact(player, arti))
 	    { /* Artifact was used - remove it from inventory */

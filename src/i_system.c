@@ -23,10 +23,8 @@ long	mb_used = 8;
 int     DisplayTicker = 0;
 
 
-void I_Tactile(int on,int off,int total)
+void I_Tactile(int __attribute__((unused)) on,int __attribute__((unused)) off,int __attribute__((unused)) total)
 {
-  /* UNUSED. */
-  on = off = total = 0;
 }
 
 ticcmd_t emptycmd;
@@ -78,7 +76,7 @@ int  I_GetTime (void)
 void I_GetHomeDirectory(void)
 {
   char* dummy;
-  int rcode;
+/*  int rcode;*/
 
   if ((dummy=getenv("HOME")) != NULL)
       {
@@ -92,7 +90,7 @@ void I_GetHomeDirectory(void)
       }
   
   /* mode: drwxr-xr-x (16877dec) */
-  rcode=mkdir(homedir, S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH); 
+  /*rcode=*/mkdir(homedir, S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH); 
   
   basedefault= (char*) malloc(strlen(homedir)+strlen("heretic.cfg")+1);
   assert(basedefault);

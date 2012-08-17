@@ -743,7 +743,7 @@ static void UploadNewTruePal(Colormap cmap, byte *palette)
   
   /* no empty entry -- search a least recently used entry */
   for (least=-1,i=0,lru=INI_LRU; i<MAX_PAL_CACHE; i++) {
-    if (pal_cache[i].lru < lru) {
+    if (pal_cache[i].lru < (size_t)lru) {
       lru=pal_cache[i].lru;
       least=i;
     }
@@ -1128,7 +1128,7 @@ void I_InitGraphics(void)
 	    if (!(n & AllValues))
 		I_Error("bad -geometry parameter");
 
-	    if (n & XValue || n & YValue);
+	    if ((n & XValue) || (n & YValue)) { } /* Whut? Xp */
 	    hints.flags |= USPosition;
 	    
 	    if (n & WidthValue || n & HeightValue)

@@ -9,64 +9,64 @@
 
 musicinfo_t S_music[] =
 {
-  { 0 },
-  { "MUS_E1M1", 0, NULL }, /* 1-1 */
-  { "MUS_E1M2", 0, NULL },
-  { "MUS_E1M3", 0, NULL },
-  { "MUS_E1M4", 0, NULL },
-  { "MUS_E1M5", 0, NULL },
-  { "MUS_E1M6", 0, NULL },
-  { "MUS_E1M7", 0, NULL },
-  { "MUS_E1M8", 0, NULL },
-  { "MUS_E1M9", 0, NULL },
+  { 0, 0, 0, 0 },
+  { "MUS_E1M1", 0, NULL, 0 }, /* 1-1 */
+  { "MUS_E1M2", 0, NULL, 0 },
+  { "MUS_E1M3", 0, NULL, 0 },
+  { "MUS_E1M4", 0, NULL, 0 },
+  { "MUS_E1M5", 0, NULL, 0 },
+  { "MUS_E1M6", 0, NULL, 0 },
+  { "MUS_E1M7", 0, NULL, 0 },
+  { "MUS_E1M8", 0, NULL, 0 },
+  { "MUS_E1M9", 0, NULL, 0 },
 
-  { "MUS_E2M1", 0, NULL }, /* 2-1 */
-  { "MUS_E2M2", 0, NULL },
-  { "MUS_E2M3", 0, NULL },
-  { "MUS_E2M4", 0, NULL },
-  { "MUS_E1M4", 0, NULL },
-  { "MUS_E2M6", 0, NULL },
-  { "MUS_E2M7", 0, NULL },
-  { "MUS_E2M8", 0, NULL },
-  { "MUS_E2M9", 0, NULL },
+  { "MUS_E2M1", 0, NULL, 0 }, /* 2-1 */
+  { "MUS_E2M2", 0, NULL, 0 },
+  { "MUS_E2M3", 0, NULL, 0 },
+  { "MUS_E2M4", 0, NULL, 0 },
+  { "MUS_E1M4", 0, NULL, 0 },
+  { "MUS_E2M6", 0, NULL, 0 },
+  { "MUS_E2M7", 0, NULL, 0 },
+  { "MUS_E2M8", 0, NULL, 0 },
+  { "MUS_E2M9", 0, NULL, 0 },
 
-  { "MUS_E1M1", 0, NULL }, /* 3-1 */
-  { "MUS_E3M2", 0, NULL },
-  { "MUS_E3M3", 0, NULL },
-  { "MUS_E1M6", 0, NULL },
-  { "MUS_E1M3", 0, NULL },
-  { "MUS_E1M2", 0, NULL },
-  { "MUS_E1M5", 0, NULL },
-  { "MUS_E1M9", 0, NULL },
-  { "MUS_E2M6", 0, NULL },
+  { "MUS_E1M1", 0, NULL, 0 }, /* 3-1 */
+  { "MUS_E3M2", 0, NULL, 0 },
+  { "MUS_E3M3", 0, NULL, 0 },
+  { "MUS_E1M6", 0, NULL, 0 },
+  { "MUS_E1M3", 0, NULL, 0 },
+  { "MUS_E1M2", 0, NULL, 0 },
+  { "MUS_E1M5", 0, NULL, 0 },
+  { "MUS_E1M9", 0, NULL, 0 },
+  { "MUS_E2M6", 0, NULL, 0 },
 
-  { "MUS_E1M6", 0, NULL }, /* 4-1 */
-  { "MUS_E1M2", 0, NULL },
-  { "MUS_E1M3", 0, NULL },
-  { "MUS_E1M4", 0, NULL },
-  { "MUS_E1M5", 0, NULL },
-  { "MUS_E1M1", 0, NULL },
-  { "MUS_E1M7", 0, NULL },
-  { "MUS_E1M8", 0, NULL },
-  { "MUS_E1M9", 0, NULL },
+  { "MUS_E1M6", 0, NULL, 0 }, /* 4-1 */
+  { "MUS_E1M2", 0, NULL, 0 },
+  { "MUS_E1M3", 0, NULL, 0 },
+  { "MUS_E1M4", 0, NULL, 0 },
+  { "MUS_E1M5", 0, NULL, 0 },
+  { "MUS_E1M1", 0, NULL, 0 },
+  { "MUS_E1M7", 0, NULL, 0 },
+  { "MUS_E1M8", 0, NULL, 0 },
+  { "MUS_E1M9", 0, NULL, 0 },
 
-  { "MUS_E2M1", 0, NULL }, /* 5-1 */
-  { "MUS_E2M2", 0, NULL },
-  { "MUS_E2M3", 0, NULL },
-  { "MUS_E2M4", 0, NULL },
-  { "MUS_E1M4", 0, NULL },
-  { "MUS_E2M6", 0, NULL },
-  { "MUS_E2M7", 0, NULL },
-  { "MUS_E2M8", 0, NULL },
-  { "MUS_E2M9", 0, NULL },
+  { "MUS_E2M1", 0, NULL, 0 }, /* 5-1 */
+  { "MUS_E2M2", 0, NULL, 0 },
+  { "MUS_E2M3", 0, NULL, 0 },
+  { "MUS_E2M4", 0, NULL, 0 },
+  { "MUS_E1M4", 0, NULL, 0 },
+  { "MUS_E2M6", 0, NULL, 0 },
+  { "MUS_E2M7", 0, NULL, 0 },
+  { "MUS_E2M8", 0, NULL, 0 },
+  { "MUS_E2M9", 0, NULL, 0 },
 
-  { "MUS_E3M2", 0, NULL }, /* 6-1 */
-  { "MUS_E3M3", 0, NULL }, /* 6-2 */
-  { "MUS_E1M6", 0, NULL }, /* 6-3 */
+  { "MUS_E3M2", 0, NULL, 0 }, /* 6-1 */
+  { "MUS_E3M3", 0, NULL, 0 }, /* 6-2 */
+  { "MUS_E1M6", 0, NULL, 0 }, /* 6-3 */
 
-  { "MUS_TITL", 0, NULL },
-  { "MUS_INTR", 0, NULL },
-  { "MUS_CPTD", 0, NULL }
+  { "MUS_TITL", 0, NULL, 0 },
+  { "MUS_INTR", 0, NULL, 0 },
+  { "MUS_CPTD", 0, NULL, 0 }
 };
 
 

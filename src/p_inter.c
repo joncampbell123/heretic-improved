@@ -145,7 +145,7 @@ boolean P_GiveAmmo(player_t *player, ammotype_t ammo, int count)
     {
       return(false);
     }
-  if(ammo < 0 || ammo > NUMAMMO)
+  if(/*ammo < 0 || */ammo > NUMAMMO)
     {
       I_Error("P_GiveAmmo: bad type %i", ammo);
     }
@@ -433,7 +433,7 @@ boolean P_GiveArtifact(player_t *player, artitype_t arti, mobj_t *mo)
   int i;
   
   i = 0;
-  while(player->inventory[i].type != arti && i < player->inventorySlotNum)
+  while((artitype_t)player->inventory[i].type != arti && (unsigned)i < (unsigned)player->inventorySlotNum)
     {
       i++;
     }

@@ -352,7 +352,7 @@ void R_DrawMaskedColumn (column_t *column, signed int baseclip)
   ================
 */
 
-void R_DrawVisSprite (vissprite_t *vis, int x1, int x2)
+void R_DrawVisSprite (vissprite_t *vis, int __attribute__((unused)) x1, int __attribute__((unused)) x2)
 {
   column_t	*column;
   int		texturecolumn;
@@ -492,7 +492,7 @@ void R_ProjectSprite (mobj_t *thing)
    * decide which patch to use for sprite reletive to player
    */
 #ifdef RANGECHECK
-  if ((unsigned)thing->sprite >= numsprites)
+  if ((unsigned)thing->sprite >= (unsigned)numsprites)
     I_Error ("R_ProjectSprite: invalid sprite number %i ",thing->sprite);
 #endif
   sprdef = &sprites[thing->sprite];
@@ -668,7 +668,7 @@ void R_DrawPSprite (pspdef_t *psp)
    * decide which patch to use
    */
 #ifdef RANGECHECK
-  if ( (unsigned)psp->state->sprite >= numsprites)
+  if ( (unsigned)psp->state->sprite >= (unsigned)numsprites)
     I_Error ("R_ProjectSprite: invalid sprite number %i "
 	     , psp->state->sprite);
 #endif

@@ -426,90 +426,90 @@ extern int     snd_Mport;                              /* midi variables */
 
 default_t defaults[] =
 {
-  { "mouse_sensitivity", &mouseXSensitivity, 5 },
+  { "mouse_sensitivity", &mouseXSensitivity, 5, 0/*scantranslate*/, 0/*untranslated*/ },
   /* rhandeev: added mouse Y sensitivity default */
-  { "mouse_ysensitivity", &mouseYSensitivity, 5 },
+  { "mouse_ysensitivity", &mouseYSensitivity, 5, 0/*scantranslate*/, 0/*untranslated*/ },
   /* rhandeev: added mouseLook, mouseInvert defaults */
   /*{ "mouse_look", &mouseLook, 1 },
     { "mouse_invert", &mouseInvert, 1 },*/
-  { "sfx_volume", &snd_SfxVolume, 10},
-  { "music_volume", &snd_MusicVolume, 10},
+  { "sfx_volume", &snd_SfxVolume, 10, 0/*scantranslate*/, 0/*untranslated*/},
+  { "music_volume", &snd_MusicVolume, 10, 0/*scantranslate*/, 0/*untranslated*/},
 
 #ifdef UNIX
-  { "key_right", &key_right, KEY_RIGHTARROW },
-  { "key_left", &key_left, KEY_LEFTARROW },
-  { "key_up", &key_up, KEY_UPARROW },
-  { "key_down", &key_down, KEY_DOWNARROW },
-  { "key_strafeleft", &key_strafeleft, ',' },
-  { "key_straferight", &key_straferight, '.' },
+  { "key_right", &key_right, KEY_RIGHTARROW, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_left", &key_left, KEY_LEFTARROW, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_up", &key_up, KEY_UPARROW, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_down", &key_down, KEY_DOWNARROW, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_strafeleft", &key_strafeleft, ',', 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_straferight", &key_straferight, '.', 0/*scantranslate*/, 0/*untranslated*/ },
 
-  { "key_fire", &key_fire, KEY_RCTRL, 1 }, 
-  { "key_use", &key_use, ' ', 1 }, 
-  { "key_strafe", &key_strafe, KEY_RALT, 1 }, 
-  { "key_speed", &key_speed, KEY_RSHIFT, 1 },
+  { "key_fire", &key_fire, KEY_RCTRL, 1/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_use", &key_use, ' ', 1/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_strafe", &key_strafe, KEY_RALT, 1/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_speed", &key_speed, KEY_RSHIFT, 1/*scantranslate*/, 0/*untranslated*/ },
   
-  { "key_flyup", &key_flyup, KEY_PAGEUP }, 
-  { "key_flydown", &key_flydown, KEY_INSERT }, 
-  { "key_flycenter", &key_flycenter, KEY_HOME }, 
-  { "key_lookup", &key_lookup, KEY_PAGEDOWN }, 
-  { "key_lookdown", &key_lookdown, KEY_DELETE }, 
-  { "key_lookcenter", &key_lookcenter, KEY_END }, 
+  { "key_flyup", &key_flyup, KEY_PAGEUP, 0/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_flydown", &key_flydown, KEY_INSERT, 0/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_flycenter", &key_flycenter, KEY_HOME, 0/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_lookup", &key_lookup, KEY_PAGEDOWN, 0/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_lookdown", &key_lookdown, KEY_DELETE, 0/*scantranslate*/, 0/*untranslated*/ }, 
+  { "key_lookcenter", &key_lookcenter, KEY_END, 0/*scantranslate*/, 0/*untranslated*/ }, 
 
 #ifdef ORIG_INVKEYS
-  { "key_invleft", &key_invleft, '[' },
-  { "key_invright", &key_invright, ']' },
+  { "key_invleft", &key_invleft, '[', 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_invright", &key_invright, ']', 0/*scantranslate*/, 0/*untranslated*/ },
 #else
-  { "key_invleft", &key_invleft, 'k' },
-  { "key_invright", &key_invright, 'l' },
+  { "key_invleft", &key_invleft, 'k', 0/*scantranslate*/, 0/*untranslated*/ },
+  { "key_invright", &key_invright, 'l', 0/*scantranslate*/, 0/*untranslated*/ },
 #endif  
 
-  { "key_useartifact", &key_useartifact, KEY_ENTER },
+  { "key_useartifact", &key_useartifact, KEY_ENTER, 0/*scantranslate*/, 0/*untranslated*/ },
 
 #ifdef SNDSERV
-  {"sndserver", (long *) &sndserver_filename, (long) "sndserver"},
-  {"sndopts", (long *) &sndserver_options, (long) "-quiet"},
+  {"sndserver", (long *) &sndserver_filename, (long) "sndserver", 0/*scantranslate*/, 0/*untranslated*/},
+  {"sndopts", (long *) &sndserver_options, (long) "-quiet", 0/*scantranslate*/, 0/*untranslated*/},
 #endif
 #ifdef __DOSOUND__
-  {"mb_used", &mb_used, 2},
+  {"mb_used", &mb_used, 2, 0/*scantranslate*/, 0/*untranslated*/},
 #endif
 #ifdef MUSSERV
-  {"musserver", (long *) &musserver_filename, (long) "musserver"},
-  {"musopts", (long *) &musserver_options, (long) ""},
+  {"musserver", (long *) &musserver_filename, (long) "musserver", 0/*scantranslate*/, 0/*untranslated*/},
+  {"musopts", (long *) &musserver_options, (long) "", 0/*scantranslate*/, 0/*untranslated*/},
 #endif
 #endif
 
 #ifdef LINUX_MOUSE
-  {"mousedev", (long *)&mousedev, (long) "/dev/mouse"},
-  {"mousetype", (long *)&mousetype, (long) "microsoft"},
+  {"mousedev", (long *)&mousedev, (long) "/dev/mouse", 0/*scantranslate*/, 0/*untranslated*/},
+  {"mousetype", (long *)&mousetype, (long) "microsoft", 0/*scantranslate*/, 0/*untranslated*/},
 #endif
   
-  { "use_mouse", &usemouse, 1 },
-  { "mouseb_fire", &mousebfire, 0 },
-  { "mouseb_strafe", &mousebstrafe, 1 },
-  { "mouseb_forward", &mousebforward, 2 },
+  { "use_mouse", &usemouse, 1, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "mouseb_fire", &mousebfire, 0, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "mouseb_strafe", &mousebstrafe, 1, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "mouseb_forward", &mousebforward, 2, 0/*scantranslate*/, 0/*untranslated*/ },
   
-  { "use_joystick", &usejoystick, 0 },
-  { "joyb_fire", &joybfire, 0 },
-  { "joyb_strafe", &joybstrafe, 1 },
-  { "joyb_use", &joybuse, 3 },
-  { "joyb_speed", &joybspeed, 2 },
+  { "use_joystick", &usejoystick, 0, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "joyb_fire", &joybfire, 0, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "joyb_strafe", &joybstrafe, 1, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "joyb_use", &joybuse, 3, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "joyb_speed", &joybspeed, 2, 0/*scantranslate*/, 0/*untranslated*/ },
   
-  { "screenblocks", &screenblocks, 10 },
+  { "screenblocks", &screenblocks, 10, 0/*scantranslate*/, 0/*untranslated*/ },
   
-  { "snd_channels", &numChannels, 3 },
+  { "snd_channels", &numChannels, 3, 0/*scantranslate*/, 0/*untranslated*/ },
     
-  { "usegamma", &usegamma, 0 },
+  { "usegamma", &usegamma, 0, 0/*scantranslate*/, 0/*untranslated*/ },
   
-  { "chatmacro0", (long *) &chat_macros[0], (long) HUSTR_CHATMACRO0 },
-  { "chatmacro1", (long *) &chat_macros[1], (long) HUSTR_CHATMACRO1 },
-  { "chatmacro2", (long *) &chat_macros[2], (long) HUSTR_CHATMACRO2 },
-  { "chatmacro3", (long *) &chat_macros[3], (long) HUSTR_CHATMACRO3 },
-  { "chatmacro4", (long *) &chat_macros[4], (long) HUSTR_CHATMACRO4 },
-  { "chatmacro5", (long *) &chat_macros[5], (long) HUSTR_CHATMACRO5 },
-  { "chatmacro6", (long *) &chat_macros[6], (long) HUSTR_CHATMACRO6 },
-  { "chatmacro7", (long *) &chat_macros[7], (long) HUSTR_CHATMACRO7 },
-  { "chatmacro8", (long *) &chat_macros[8], (long) HUSTR_CHATMACRO8 },
-  { "chatmacro9", (long *) &chat_macros[9], (long) HUSTR_CHATMACRO9 }
+  { "chatmacro0", (long *) &chat_macros[0], (long) HUSTR_CHATMACRO0, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro1", (long *) &chat_macros[1], (long) HUSTR_CHATMACRO1, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro2", (long *) &chat_macros[2], (long) HUSTR_CHATMACRO2, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro3", (long *) &chat_macros[3], (long) HUSTR_CHATMACRO3, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro4", (long *) &chat_macros[4], (long) HUSTR_CHATMACRO4, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro5", (long *) &chat_macros[5], (long) HUSTR_CHATMACRO5, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro6", (long *) &chat_macros[6], (long) HUSTR_CHATMACRO6, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro7", (long *) &chat_macros[7], (long) HUSTR_CHATMACRO7, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro8", (long *) &chat_macros[8], (long) HUSTR_CHATMACRO8, 0/*scantranslate*/, 0/*untranslated*/ },
+  { "chatmacro9", (long *) &chat_macros[9], (long) HUSTR_CHATMACRO9, 0/*scantranslate*/, 0/*untranslated*/ }
 };
 
 int numdefaults;

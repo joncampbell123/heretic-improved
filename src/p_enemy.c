@@ -363,7 +363,7 @@ void P_NewChaseDir (mobj_t *actor)
   if (d[1] != DI_NODIR && d[2] != DI_NODIR)
     {
       actor->movedir = diags[((deltay<0)<<1)+(deltax>0)];
-      if (actor->movedir != turnaround && P_TryWalk(actor))
+      if ((unsigned)actor->movedir != (unsigned)turnaround && P_TryWalk(actor))
 	return;
     }
   
@@ -407,7 +407,7 @@ void P_NewChaseDir (mobj_t *actor)
     {
       for (tdir=DI_EAST ; tdir<=DI_SOUTHEAST ; tdir++)
 	{
-	  if (tdir!=turnaround)
+	  if ((unsigned)tdir!=(unsigned)turnaround)
 	    {
 	      actor->movedir =tdir;
 	      if ( P_TryWalk(actor) )
@@ -419,7 +419,7 @@ void P_NewChaseDir (mobj_t *actor)
     {
       for (tdir=DI_SOUTHEAST ; tdir >= DI_EAST;tdir--)
 	{
-	  if (tdir!=turnaround)
+	  if ((unsigned)tdir!=(unsigned)turnaround)
 	    {
 	      actor->movedir =tdir;
 	      if ( P_TryWalk(actor) )
@@ -510,7 +510,7 @@ boolean P_LookForPlayers(mobj_t *actor, boolean allaround)
   int c;
   int stop;
   player_t *player;
-  sector_t *sector;
+/*  sector_t *sector;*/
   angle_t an;
   fixed_t dist;
   
@@ -518,7 +518,7 @@ boolean P_LookForPlayers(mobj_t *actor, boolean allaround)
     { /* Single player game and player is dead, look for monsters */
       return(P_LookForMonsters(actor));
     }
-  sector = actor->subsector->sector;
+/*  sector = actor->subsector->sector;*/
   c = 0;
   stop = (actor->lastlook-1)&3;
   for( ; ; actor->lastlook = (actor->lastlook+1)&3 )
@@ -1588,12 +1588,12 @@ void A_Sor2DthLoop(mobj_t *actor)
   //
   //----------------------------------------------------------------------------
 */
-void A_SorZap(mobj_t *actor) {S_StartSound(NULL, sfx_sorzap);}
-void A_SorRise(mobj_t *actor) {S_StartSound(NULL, sfx_sorrise);}
-void A_SorDSph(mobj_t *actor) {S_StartSound(NULL, sfx_sordsph);}
-void A_SorDExp(mobj_t *actor) {S_StartSound(NULL, sfx_sordexp);}
-void A_SorDBon(mobj_t *actor) {S_StartSound(NULL, sfx_sordbon);}
-void A_SorSightSnd(mobj_t *actor) {S_StartSound(NULL, sfx_sorsit);}
+void A_SorZap(mobj_t __attribute__((unused)) *actor) {S_StartSound(NULL, sfx_sorzap);}
+void A_SorRise(mobj_t __attribute__((unused)) *actor) {S_StartSound(NULL, sfx_sorrise);}
+void A_SorDSph(mobj_t __attribute__((unused)) *actor) {S_StartSound(NULL, sfx_sordsph);}
+void A_SorDExp(mobj_t __attribute__((unused)) *actor) {S_StartSound(NULL, sfx_sordexp);}
+void A_SorDBon(mobj_t __attribute__((unused)) *actor) {S_StartSound(NULL, sfx_sordbon);}
+void A_SorSightSnd(mobj_t __attribute__((unused)) *actor) {S_StartSound(NULL, sfx_sorsit);}
 
 
 /*
@@ -2354,7 +2354,7 @@ void A_MakePod(mobj_t *actor)
   mobj_t *mo;
   fixed_t x;
   fixed_t y;
-  fixed_t z;
+/*  fixed_t z;*/
   
   if(actor->special1 == MAX_GEN_PODS)
     { /* Too many generated pods */
@@ -2362,7 +2362,7 @@ void A_MakePod(mobj_t *actor)
     }
   x = actor->x;
   y = actor->y;
-  z = actor->z;
+/*  z = actor->z;*/
   mo = P_SpawnMobj(x, y, ONFLOORZ, MT_POD);
   if(P_CheckPosition(mo, x, y) == false)
     { /* Didn't fit */

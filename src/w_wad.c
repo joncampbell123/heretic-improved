@@ -290,7 +290,7 @@ void W_AddFile (char *filename)
     I_Error ("Couldn't realloc lumpinfo");
   lump_p = &lumpinfo[startlump];
   
-  for (i=startlump ; i<numlumps ; i++,lump_p++, fileinfo++)
+  for (i=(unsigned)startlump ; i<(unsigned)numlumps ; i++,lump_p++, fileinfo++)
     {
       lump_p->handle = handle;
       lump_p->position = LONG(fileinfo->filepos);
@@ -498,15 +498,15 @@ void W_ReadLump (int lump, void *dest)
 
 void	*W_CacheLumpNum (int lump, int tag)
 {
-  byte *ptr;
+/*  byte *ptr;*/
   
-  if ((unsigned)lump >= numlumps)
+  if ((unsigned)lump >= (unsigned)numlumps)
     I_Error ("W_CacheLumpNum: %i >= numlumps",lump);
   
   if (!lumpcache[lump])
     {	/* read the lump in */
       /* printf ("cache miss on lump %i\n",lump); */
-      ptr = Z_Malloc (W_LumpLength (lump), tag, &lumpcache[lump]);
+      /*ptr = */Z_Malloc (W_LumpLength (lump), tag, &lumpcache[lump]);
       W_ReadLump (lump, lumpcache[lump]);
     }
   else

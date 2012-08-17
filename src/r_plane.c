@@ -113,7 +113,7 @@ void R_MapPlane (int y, int x1, int x2)
   if (x2 < x1 
       || x1<0 
       || x2>=viewwidth 
-      || (unsigned)y>viewheight)
+      || (unsigned)y>(unsigned)viewheight)
     I_Error ("R_MapPlane: %i, %i at %i",x1,x2,y);
 #endif
   
@@ -414,7 +414,7 @@ void R_DrawPlanes (void)
 			  return;
 		      
 #ifdef RANGECHECK
-		      if ((unsigned)dc_x >= screenwidth || dc_yl < 0 || dc_yh >= screenheight)
+		      if ((unsigned)dc_x >= (unsigned)screenwidth || dc_yl < 0 || (unsigned)dc_yh >= (unsigned)screenheight)
 			  I_Error ("R_DrawSpecColumn: %i to %i at %i", dc_yl, dc_yh, dc_x);
 #endif
 		  

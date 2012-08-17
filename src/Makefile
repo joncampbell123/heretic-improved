@@ -105,6 +105,8 @@ all:
 	@echo " make clean     - will clean up object and exec files"
 	@echo
 
+all-targets: x11 fastx11 sdl sndserver musserver
+
 clean:	
 	rm -f $(OBJS) xheretic xaheretic ggiheretic vgaheretic \
 	sdlheretic graphics/i_x11.o graphics/i_x11_fast.o \

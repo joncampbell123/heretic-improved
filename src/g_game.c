@@ -393,7 +393,7 @@ void G_BuildTiccmd (ticcmd_t *cmd)
   /*
    * forward double click
    */
-  if (mousebuttons[mousebforward] != dclickstate && dclicktime > 1 )
+  if ((size_t)mousebuttons[mousebforward] != (size_t)dclickstate && dclicktime > 1 )
     {
       dclickstate = mousebuttons[mousebforward];
       if (dclickstate)
@@ -421,7 +421,7 @@ void G_BuildTiccmd (ticcmd_t *cmd)
    */
   bstrafe = mousebuttons[mousebstrafe]
     || joybuttons[joybstrafe];
-  if (bstrafe != dclickstate2 && dclicktime2 > 1 )
+  if ((size_t)bstrafe != (size_t)dclickstate2 && dclicktime2 > 1 )
     {
       dclickstate2 = bstrafe;
       if (dclickstate2)
@@ -900,10 +900,10 @@ void G_Ticker (void)
 
 void G_InitPlayer (int player)
 {
-  player_t        *p;
+/*  player_t        *p;*/
   
   /* set up the saved info */
-  p = &players[player];
+/*  p = &players[player];*/
   
   /* clear everything else to defaults */
   G_PlayerReborn (player);
@@ -1286,14 +1286,14 @@ void G_LoadGame(char *name)
 
 void G_DoLoadGame(void)
 {
-  int length;
+/*  int length;*/
   int i;
   int a, b, c;
   char vcheck[VERSIONSIZE];
   
   gameaction = ga_nothing;
   
-  length = M_ReadFile(savename, &savebuffer);
+  /*length = */M_ReadFile(savename, &savebuffer);
   save_p = savebuffer+SAVESTRINGSIZE;
   /* Skip the description field */
   memset(vcheck, 0, sizeof(vcheck));
@@ -1377,8 +1377,10 @@ void G_InitNew(skill_t skill, int episode, int map)
       paused = false;
       S_ResumeSound();
     }
+#if 0/*sk_baby==0*/
   if(skill < sk_baby)
     skill = sk_baby;
+#endif
   if(skill > sk_nightmare)
     skill = sk_nightmare;
   if(episode < 1)
@@ -1400,8 +1402,8 @@ void G_InitNew(skill_t skill, int episode, int map)
       respawnmonsters = false;
     }
   /* Set monster missile speeds */
-  speed = skill == sk_nightmare;
-  for(i = 0; MonsterMissileInfo[i].type != -1; i++)
+  speed = (unsigned)skill == (unsigned)sk_nightmare;
+  for(i = 0; (int)MonsterMissileInfo[i].type != -1; i++)
     {
       mobjinfo[MonsterMissileInfo[i].type].speed
 	= MonsterMissileInfo[i].speed[speed]<<FRACBITS;
@@ -1498,7 +1500,7 @@ void G_WriteDemoTiccmd (ticcmd_t *cmd)
   ===================
 */
 
-void G_RecordDemo (skill_t skill, int numplayers, int episode, int map, char *name)
+void G_RecordDemo (skill_t skill, int __attribute__((unused)) numplayers, int episode, int map, char *name)
 {
   int             i;
   

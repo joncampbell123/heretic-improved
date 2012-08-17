@@ -139,7 +139,7 @@ static void S_StopChannel(int cnum)
  */
 #ifdef __DOSOUND__
 static int S_AdjustSoundParams( mobj_t*	listener, mobj_t* source, 
-				int* vol, int* sep, int* pitch )
+				int* vol, int* sep, int __attribute((unused)) * pitch )
 {
   fixed_t	approx_dist;
   fixed_t	adx;

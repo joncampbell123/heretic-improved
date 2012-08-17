@@ -167,12 +167,8 @@ int I_GetSfxLumpNum(sfxinfo_t* sfx)
  * Pitching (that is, increased speed of playback)
  *  is set, but currently not used by mixing.
  */
-int I_StartSound( int id, int vol, int sep, int pitch, int priority )
+int I_StartSound( int id, int vol, int sep, int pitch, int __attribute__((unused)) priority )
 {
-
-  /* UNUSED */
-  priority = 0;
-  
 #ifdef SNDSERV
   if (sndserver)
     {
@@ -184,9 +180,7 @@ int I_StartSound( int id, int vol, int sep, int pitch, int priority )
   return id;
 }
 
-
-
-void I_StopSound (int handle)
+void I_StopSound (int __attribute__((unused)) handle)
 {
   /*
    * You need the handle returned by StartSound.
@@ -194,11 +188,7 @@ void I_StopSound (int handle)
    *  tracking down the handle,
    *  an setting the channel to zero.
    */
-    
-  /* UNUSED. */
-  handle = 0;
 }
-
 
 int I_SoundIsPlaying(int handle)
 {
@@ -344,7 +334,7 @@ void I_SubmitSound(void)
 }
 
 
-void I_UpdateSoundParams( int handle, int vol, int sep, int pitch )
+void I_UpdateSoundParams( int __attribute__((unused)) handle, int __attribute__((unused)) vol, int __attribute__((unused)) sep, int __attribute__((unused)) pitch )
 {
   /*
    * I fail too see that this is used.
@@ -352,9 +342,6 @@ void I_UpdateSoundParams( int handle, int vol, int sep, int pitch )
    *  on which channel the sound might be active,
    *  and resetting the channel parameters.
    */
-  
-  /* UNUSED. */
-  handle = vol = sep = pitch = 0;
 }
 
 
@@ -505,7 +492,7 @@ void I_PlaySong(int handle, int looping)
 #endif
 }
 
-void I_PauseSong (int handle)
+void I_PauseSong (int __attribute__((unused)) handle)
 {
 #ifdef MUSSERV
   if (musserver == NULL) return;
@@ -515,7 +502,7 @@ void I_PauseSong (int handle)
 #endif
 }
 
-void I_ResumeSong (int handle)
+void I_ResumeSong (int __attribute__((unused)) handle)
 {
 #ifdef MUSSERV
   if (musserver == NULL || playing_handle == 0)
@@ -526,7 +513,7 @@ void I_ResumeSong (int handle)
 #endif
 }
 
-void I_StopSong(int handle)
+void I_StopSong(int __attribute__((unused)) handle)
 {
 #ifdef MUSSERV
   if ((musserver == NULL) || (playing_handle == 0))

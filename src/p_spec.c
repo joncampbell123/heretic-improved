@@ -177,7 +177,7 @@ animdef_t animdefs[] =
   {false, "FLATHUH4", "FLATHUH1", 8}, /* Super Lava */
   {true, "LAVAFL3", "LAVAFL1", 6},    /* Texture: Lavaflow */
   {true, "WATRWAL3", "WATRWAL1", 4},  /* Texture: Waterfall */
-  {-1}
+  {-1, "", "", 0}
 };
 
 anim_t anims[MAXANIMS];
@@ -255,7 +255,7 @@ void P_InitPicAnims(void)
   int i;
   
   lastanim = anims;
-  for(i = 0; animdefs[i].istexture != -1; i++)
+  for(i = 0; (int)animdefs[i].istexture != -1; i++)
     {
       if(animdefs[i].istexture)
 	{ /* Texture animation */
@@ -1118,11 +1118,11 @@ void P_SpawnSpecials (void)
 {
   sector_t	*sector;
   int		i;
-  int		episode;
+/*  int		episode;*/
   
-  episode = 1;
+/*  episode = 1;
   if (W_CheckNumForName("texture2") >= 0)
-    episode = 2;
+    episode = 2;*/
   
   /*
    *	Init special SECTORs

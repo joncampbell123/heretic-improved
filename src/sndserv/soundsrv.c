@@ -572,7 +572,7 @@ int main( int c, char**	v )
   int		rc;
   int		nrc;
   int		sndnum;
-  int		handle = 0;
+//  int		handle = 0;
   
   unsigned char	commandbuf[10];
   struct timeval	zerowait = { 0, 0 };
@@ -666,7 +666,7 @@ int main( int c, char**	v )
 			vol = (commandbuf[4]<<4) + commandbuf[5];
 			sep = (commandbuf[6]<<4) + commandbuf[7];
 			
-			handle = addsfx(sndnum, vol, step, sep);
+			/*handle = */addsfx(sndnum, vol, step, sep);
 			/*
 			 * returns the handle
 			 *	outputushort(handle);

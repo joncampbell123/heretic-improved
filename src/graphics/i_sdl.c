@@ -122,7 +122,7 @@ void I_InitGraphics(void) {
      */
     
     sdl_screen = SDL_SetVideoMode( screenwidth, screenheight, 8,
-				   SDL_FULLSCREEN );
+				   /*SDL_FULLSCREEN*/0 );
     /* SDL_HWSURFACE | SDL_FULLSCREEN ); */
     /* 0 ); */
     if( sdl_screen == NULL )

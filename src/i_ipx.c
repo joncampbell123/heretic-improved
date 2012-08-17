@@ -99,12 +99,12 @@ static void ipx_print_node(FILE *stream,ipx_node *node);
 static void ipx_print_port(FILE *stream,ipx_port *port);
 #endif /* #ifdef IPX_DEBUG */
 
-static int inline ipx_same_node(ipx_node *a,ipx_node *b)
+static inline int ipx_same_node(ipx_node *a,ipx_node *b)
 {
   return(!memcmp(a,b,sizeof(ipx_node)));
 }
 
-static int inline ipx_same_addr(struct sockaddr_ipx *a,struct sockaddr_ipx *b)
+static inline int ipx_same_addr(struct sockaddr_ipx *a,struct sockaddr_ipx *b)
 {
   if (a->sipx_network != b->sipx_network || a->sipx_port != b->sipx_port) return(FALSE);
   return(ipx_same_node(&a->sipx_node,&b->sipx_node));
@@ -651,7 +651,7 @@ static int get_ipx_interfaces(void)
 #endif
     sipx=(struct sockaddr_ipx *)&pifr->ifr_addr;
     memcpy(&ifr_bak,pifr,sizeof(ifr_bak));
-    for (j=0; j<NUM_IPX_FRAMES; j++) { /* try all frame types */
+    for (j=0; j<(int)NUM_IPX_FRAMES; j++) { /* try all frame types */
       memcpy(pifr,&ifr_bak,sizeof(ifr_bak));
       sipx->sipx_type=ipx_frametypes[j];
       res=ioctl(sock,SIOCGIFADDR,pifr);

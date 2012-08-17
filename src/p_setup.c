@@ -509,7 +509,7 @@ void P_GroupLines (void)
   =================
 */
 
-void P_SetupLevel (int episode, int map, int playermask, skill_t skill)
+void P_SetupLevel (int episode, int map, int __attribute__((unused)) playermask, skill_t __attribute__((unused)) skill)
 {
   int           i;
   int           parm;

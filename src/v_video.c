@@ -421,7 +421,7 @@ void V_Filter_Screen_linear(byte* screenp)
 
      */
     
-    for ( i=0; i<(scrx*scry); i++ )
+    for ( i=0; i<(unsigned)(scrx*scry); i++ )
 	{
 	    if (chps(screenp[i-1]) && chps(screenp[i]) && chps(screenp[i+1]))
 		{
@@ -445,7 +445,7 @@ void V_Filter_Screen_bilinear(byte* screenp)
      */
 
 
-    for ( i=0; i<(scrx*scry); i++ )
+    for ( i=0; i<(unsigned)(scrx*scry); i++ )
 	{
 	    if (chps(screenp[i-1]) && chps(screenp[i]) && chps(screenp[i+1]) &&
 		chps(screenp[i-scrx]) && chps(screenp[i+scrx]) &&
