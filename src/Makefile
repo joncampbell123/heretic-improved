@@ -51,7 +51,7 @@ endif
 # If you want IPX-netcode compiled, replace $(CDEFS.udp) with $(CDEFS.ipx)
 
 CFLAGS = -Wall -Wstrict-prototypes -Wextra -Wno-strict-aliasing $(CDEFS.udp) \
-	 -I. -I.. -I/usr/X11R6/include $(COPT.arch) $(COPT.sound)
+	 -I. -I.. -I/usr/X11R6/include $(COPT.arch) $(COPT.sound) -g3 -O0
 
 # Uncomment the line below if you want to use original "[" and "]" keys
 # for inventory access, instead of "k" and "l".
