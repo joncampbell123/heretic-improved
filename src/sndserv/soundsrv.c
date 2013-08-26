@@ -52,7 +52,7 @@
 #include "soundsrv.h"
 #include "wadread.h"
 
-
+#define MIX_CHANNELS	16
 
 /*
  * Department of Redundancy Department.
@@ -98,31 +98,31 @@ int		sfxdevice;
 int 		musdevice;
 
 /* the channel data pointers */
-unsigned char*	channels[8];
+unsigned char*	channels[MIX_CHANNELS] = {NULL};
 
 /* the channel step amount */
-unsigned int	channelstep[8];
+unsigned int	channelstep[MIX_CHANNELS] = {0};
 
 /* 0.16 bit remainder of last step */
-unsigned int	channelstepremainder[8];
+unsigned int	channelstepremainder[MIX_CHANNELS] = {0};
 
 /* the channel data end pointers */
-unsigned char*	channelsend[8];
+unsigned char*	channelsend[MIX_CHANNELS] = {NULL};
 
 /* time that the channel started playing */
-int		channelstart[8];
+int		channelstart[MIX_CHANNELS] = {0};
 
 /* the channel handles */
-int 		channelhandles[8];
+int 		channelhandles[MIX_CHANNELS] = {0};
 
 /* the channel left volume lookup */
-int*		channelleftvol_lookup[8];
+int*		channelleftvol_lookup[MIX_CHANNELS] = {0};
 
 /* the channel right volume lookup */
-int*		channelrightvol_lookup[8];
+int*		channelrightvol_lookup[MIX_CHANNELS] = {0};
 
 /* sfx id of the playing sound effect */
-int		channelids[8];
+int		channelids[MIX_CHANNELS] = {0};
 
 int		snd_verbose=1;
 
@@ -147,7 +147,7 @@ int mix(void)
   signed short*		rightout;
   signed short*		leftend;
   
-  int				step;
+  int			step,ch;
   
   leftout = mixbuffer;
   rightout = mixbuffer+1;
@@ -162,109 +162,20 @@ int mix(void)
       dl = 0;
       dr = 0;
       
-      if (channels[0])
-	{
-	  sample = *channels[0];
-	  dl += channelleftvol_lookup[0][sample];
-	  dr += channelrightvol_lookup[0][sample];
-	  channelstepremainder[0] += channelstep[0];
-	  channels[0] += channelstepremainder[0] >> 16;
-	  channelstepremainder[0] &= 65536-1;
+      for (ch=0;ch < MIX_CHANNELS;ch++) {
+        if (channels[ch]) {
+	  sample = *channels[ch];
+	  dl += channelleftvol_lookup[ch][sample];
+	  dr += channelrightvol_lookup[ch][sample];
+	  channelstepremainder[ch] += channelstep[ch];
+	  channels[ch] += channelstepremainder[ch] >> 16;
+	  channelstepremainder[ch] &= 65536-1;
 	  
-	  if (channels[0] >= channelsend[0])
-	    channels[0] = 0;
+	  if (channels[ch] >= channelsend[ch])
+	    channels[ch] = 0;
 	}
-      
-      if (channels[1])
-	{
-	  sample = *channels[1];
-	  dl += channelleftvol_lookup[1][sample];
-	  dr += channelrightvol_lookup[1][sample];
-	  channelstepremainder[1] += channelstep[1];
-	  channels[1] += channelstepremainder[1] >> 16;
-	  channelstepremainder[1] &= 65536-1;
-	  
-	  if (channels[1] >= channelsend[1])
-	    channels[1] = 0;
-	}
-      
-      if (channels[2])
-	{
-	  sample = *channels[2];
-	  dl += channelleftvol_lookup[2][sample];
-	  dr += channelrightvol_lookup[2][sample];
-	  channelstepremainder[2] += channelstep[2];
-	  channels[2] += channelstepremainder[2] >> 16;
-	  channelstepremainder[2] &= 65536-1;
-	  
-	  if (channels[2] >= channelsend[2])
-	    channels[2] = 0;
-	}
-      
-      if (channels[3])
-	{
-	  sample = *channels[3];
-	  dl += channelleftvol_lookup[3][sample];
-	  dr += channelrightvol_lookup[3][sample];
-	  channelstepremainder[3] += channelstep[3];
-	  channels[3] += channelstepremainder[3] >> 16;
-	  channelstepremainder[3] &= 65536-1;
-	  
-	  if (channels[3] >= channelsend[3])
-	    channels[3] = 0;
-	}
-      
-      if (channels[4])
-	{
-	  sample = *channels[4];
-	  dl += channelleftvol_lookup[4][sample];
-	  dr += channelrightvol_lookup[4][sample];
-	  channelstepremainder[4] += channelstep[4];
-	  channels[4] += channelstepremainder[4] >> 16;
-	  channelstepremainder[4] &= 65536-1;
-	  
-	  if (channels[4] >= channelsend[4])
-	    channels[4] = 0;
-	}
-      
-      if (channels[5])
-	{
-	  sample = *channels[5];
-	  dl += channelleftvol_lookup[5][sample];
-	  dr += channelrightvol_lookup[5][sample];
-	  channelstepremainder[5] += channelstep[5];
-	  channels[5] += channelstepremainder[5] >> 16;
-	  channelstepremainder[5] &= 65536-1;
-	  
-	  if (channels[5] >= channelsend[5])
-	    channels[5] = 0;
-	}
-      
-      if (channels[6])
-	{
-	  sample = *channels[6];
-	  dl += channelleftvol_lookup[6][sample];
-	  dr += channelrightvol_lookup[6][sample];
-	  channelstepremainder[6] += channelstep[6];
-	  channels[6] += channelstepremainder[6] >> 16;
-	  channelstepremainder[6] &= 65536-1;
-	  
-	  if (channels[6] >= channelsend[6])
-	    channels[6] = 0;
-	}
-      if (channels[7])
-	{
-	  sample = *channels[7];
-	  dl += channelleftvol_lookup[7][sample];
-	  dr += channelrightvol_lookup[7][sample];
-	  channelstepremainder[7] += channelstep[7];
-	  channels[7] += channelstepremainder[7] >> 16;
-	  channelstepremainder[7] &= 65536-1;
-	  
-	  if (channels[7] >= channelsend[7])
-	    channels[7] = 0;
-	}
-      
+      }
+     
       /*
        * Has been char instead of short.
        * if (dl > 127) *leftout = 127;
