@@ -88,8 +88,9 @@ void		**lumpcache;
 
 void strupr (char *s)
 {
-  while (*s)
-    *s++ = toupper(*s);
+  while (*s) {
+    *s = toupper(*s); s++;
+  }
 }
 
 /*
@@ -394,7 +395,8 @@ int	W_CheckNumForName (char *name)
   lumpinfo_t	*lump_p;
   
   /* make the name into two integers for easy compares */
-  
+ 
+  memset(name8,0,8); 
   strncpy (name8,name,8);
   name8[8] = 0;			/* in case the name was a fill 8 chars */
   strupr (name8);		/* case insensitive */
