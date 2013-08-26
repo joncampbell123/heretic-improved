@@ -1840,7 +1840,7 @@ void A_GauntletAttack(player_t *player, pspdef_t *psp)
 			  linetarget->x, linetarget->y);
   if(angle-player->mo->angle > ANG180)
     {
-      if(angle-player->mo->angle < -(ANG90/20))
+      if(angle-player->mo->angle < ((angle_t)(-(ANG90/20))))
 	player->mo->angle = angle+ANG90/21;
       else
 	player->mo->angle -= ANG90/20;
